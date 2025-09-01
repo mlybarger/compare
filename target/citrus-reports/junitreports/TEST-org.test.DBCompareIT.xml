@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.test.DBCompareIT" time="0.519" tests="3" errors="0" skipped="0" failures="0">
+    <testcase name="DBCompareIT.echoToday" classname="org.test.DBCompareIT" time="0.025"/>
+    <testcase name="SampleJavaTest.sayHello" classname="org.test.DBCompareIT" time="0.001"/>
+    <testcase name="DBCompareIT.testPostgresConnection" classname="org.test.DBCompareIT" time="0.493"/>
+</testsuite>

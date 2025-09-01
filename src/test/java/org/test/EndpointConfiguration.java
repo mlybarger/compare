@@ -29,8 +29,8 @@ public class EndpointConfiguration {
 
 		dataSource.setDriverClassName("org.postgresql.Driver");
 		dataSource.setUrl(url);
-		dataSource.setUsername("postgres");
-		dataSource.setPassword(decrypt("Y2hhbmdlbWU=")); // 'changeme");
+		dataSource.setUsername(username);
+		dataSource.setPassword(decrypt(password)); // 'changeme");
 		dataSource.setInitialSize(5);
 		dataSource.setMaxTotal(20);
 
