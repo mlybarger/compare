@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.test</groupId>
+	<artifactId>compare</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<name>Citrus Integration Test</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>17</java.version>
+
+		<maven.version>3.9.8</maven.version>
+		<maven.compiler.version>3.11.0</maven.compiler.version>
+		<maven.compiler.release>${java.version}</maven.compiler.release>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+
+		<citrus.version>4.7.0</citrus.version>
+
+		<slf4j.version>2.0.11</slf4j.version>
+		<log4j2.version>2.22.1</log4j2.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.citrusframework</groupId>
+			<artifactId>citrus-core</artifactId>
+			<version>${citrus.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.citrusframework</groupId>
+			<artifactId>citrus-base</artifactId>
+			<version>${citrus.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.citrusframework</groupId>
+			<artifactId>citrus-jms</artifactId>
+			<version>${citrus.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.citrusframework</groupId>
+			<artifactId>citrus-ws</artifactId>
+			<version>${citrus.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.citrusframework</groupId>
+			<artifactId>citrus-http</artifactId>
+			<version>${citrus.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.citrusframework</groupId>
+			<artifactId>citrus-testng</artifactId>
+			<version>${citrus.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.citrusframework</groupId>
+			<artifactId>citrus-sql</artifactId>
+			<version>${citrus.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.citrusframework</groupId>
+			<artifactId>citrus-groovy</artifactId>
+			<version>${citrus.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j2-impl</artifactId>
+			<version>${log4j2.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>2.12.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.7.3</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.citrusframework.mvn</groupId>
+				<artifactId>citrus-maven-plugin</artifactId>
+				<version>${citrus.version}</version>
+				<configuration>
+					<targetPackage>org.test</targetPackage>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.version}</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<release>${java.version}</release>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.5.3</version>
+				<configuration>
+					<skipTests>true</skipTests>
+					<failIfNoTests>false</failIfNoTests>
+					<workingDirectory>${project.build.directory}</workingDirectory>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.surefire</groupId>
+						<artifactId>surefire-testng</artifactId>
+						<version>3.5.3</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>3.5.3</version>
+				<executions>
+					<execution>
+						<id>integration-tests</id>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.surefire</groupId>
+						<artifactId>surefire-testng</artifactId>
+						<version>3.5.3</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+</project>
