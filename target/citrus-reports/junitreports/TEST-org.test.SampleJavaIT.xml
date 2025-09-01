@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.test.SampleJavaIT" time="0.002" tests="2" errors="0" skipped="0" failures="0">
-    <testcase name="SampleJavaIT.echoToday" classname="org.test.SampleJavaIT" time="0.001"/>
-    <testcase name="SampleJavaTest.sayHello" classname="org.test.SampleJavaIT" time="0.001"/>
-</testsuite>
